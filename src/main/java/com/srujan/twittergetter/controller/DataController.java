@@ -1,24 +1,14 @@
 package com.srujan.twittergetter.controller;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.util.Iterator;
-
-import com.fasterxml.jackson.core.JsonParser;
 
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.json.simple.JSONObject;
 
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +20,7 @@ public class DataController {
 
     @GetMapping("/data")
     public ResponseEntity<StreamingResponseBody> getTwitterData() throws FileNotFoundException {
-        FileReader fileReader = new FileReader("/home/kafka/twitter-data/bitcoin-data.json");
+        FileReader fileReader = new FileReader("src/main/resources/data.json");
 
         return ResponseEntity.ok()
                 .contentType(MediaType.APPLICATION_JSON)
